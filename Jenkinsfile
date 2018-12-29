@@ -9,7 +9,38 @@ node {
 
   stage('Create Docker Image') {
     dir('webapp') {
-      docker.build("arungupta/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
+      docker.build("arungupta/docker-jenkins-pipeline:${env.BUILD_NUMBER}")docker && adduser docker docker
+
+@willfarrell fix the bug please
+@markqiu markqiu closed this on Dec 23, 2017
+@willfarrell
+Owner
+willfarrell commented on Dec 23, 2017
+
+@markqiu Just submit a PR. I'm happy to merge.
+@kendokan
+Contributor
+kendokan commented on Jan 10
+
+Confirmed the fix from @markqiu is functional.
+kendokan added a commit to kendokan/docker-crontab that referenced this issue on Jan 10
+@kendokan
+fixed willfarrell#9
+40b8b93
+willfarrell added a commit that referenced this issue on Jan 10
+@willfarrell
+Merge pull request #10 from kendokan/master
+147e900
+@willfarrell
+Owner
+willfarrell commented on Jan 10
+
+Thanks,
+@amityouk
+
+Attach files by dragging & dropping, selecting them, or pasting from the clipboard.
+Styling with Markdown is supported
+
     }
   }
 
@@ -20,7 +51,38 @@ node {
 
       // Run application using Docker image
       sh "DB=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' db`"
-      sh "docker run -e DB_URI=$DB arungupta/docker-jenkins-pipeline:${env.BUILD_NUMBER}"
+      sh "docker run -e DB_URI=$DB arungupta/docker-jenkins-pipeline:${env.BUILD_NUMBER}"docker && adduser docker docker
+
+@willfarrell fix the bug please
+@markqiu markqiu closed this on Dec 23, 2017
+@willfarrell
+Owner
+willfarrell commented on Dec 23, 2017
+
+@markqiu Just submit a PR. I'm happy to merge.
+@kendokan
+Contributor
+kendokan commented on Jan 10
+
+Confirmed the fix from @markqiu is functional.
+kendokan added a commit to kendokan/docker-crontab that referenced this issue on Jan 10
+@kendokan
+fixed willfarrell#9
+40b8b93
+willfarrell added a commit that referenced this issue on Jan 10
+@willfarrell
+Merge pull request #10 from kendokan/master
+147e900
+@willfarrell
+Owner
+willfarrell commented on Jan 10
+
+Thanks,
+@amityouk
+
+Attach files by dragging & dropping, selecting them, or pasting from the clipboard.
+Styling with Markdown is supported
+
 
       // Run tests using Maven
       //dir ('webapp') {
